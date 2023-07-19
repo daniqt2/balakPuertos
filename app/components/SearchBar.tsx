@@ -2,11 +2,17 @@
 
 import { useState } from "react";
 
-export default function SearchBar(props: any) {
-  const [filtered, setFiltered] = useState([]);
-  const [selected, setSelected] = useState([]);
+interface IPuerto {
+  name: string;
+  description: string;
+  gx_media_links: string;
+}
 
-  const handleChange = (e) => {
+export default function SearchBar(props: { data: IPuerto[] }) {
+  const [filtered, setFiltered] = useState<IPuerto[]>([]);
+  const [selected, setSelected] = useState<IPuerto[]>([]);
+
+  const handleChange = (e: any) => {
     const filter = e.target.value;
     const res = props.data.filter((p) =>
       p.name.toLowerCase().includes(filter.toLowerCase())
@@ -16,7 +22,7 @@ export default function SearchBar(props: any) {
     console.log(res);
   };
 
-  const addPuerto = (p) => {
+  const addPuerto = (p: any) => {
     selected.push(p);
     setSelected([...selected]);
   };
