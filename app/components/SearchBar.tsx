@@ -28,30 +28,28 @@ export default function SearchBar(props: { data: IPuerto[] }) {
   };
 
   return (
-    <div>
+    <div onClick={() => setFiltered([])}>
       <div className="pt-10 w-full flex">
         <div className="w-full text-center">
-          <label htmlFor="search" className="text-white w-1/3 mx-auto">
+          <label htmlFor="search" className="text-white lg:w-1/3 mx-auto">
             <p>AÑADE UN PUERTO</p>
           </label>
           <input
             name="search"
-            className="rounded-t-md py-2 px-5 text-black w-1/3 mx-auto"
+            className="rounded-t-md py-2 px-5 text-black w-full lg:w-1/3 mx-auto"
             onChange={handleChange}
           />
         </div>
       </div>
-      <div className="w-1/3 mx-auto">
+      <div className="lg:w-1/3 mx-auto overflow-y-scroll max-h-96">
         {filtered.map((_, idx) => (
           <div
+            onClick={() => addPuerto(_)}
             key={idx}
             className=" bg-gray-200 p-2 text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:bg-gray-300 flex"
           >
             <p className="flex-grow">{_.name}</p>
-            <div
-              className=" bg-white px-2  rounded-full"
-              onClick={() => addPuerto(_)}
-            >
+            <div className=" " onClick={() => addPuerto(_)}>
               +
             </div>
           </div>
