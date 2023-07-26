@@ -13,8 +13,9 @@ const authOptions = {
   ],
   callbacks: {
     async session({ session }: { session: Session }) {
-      const sessionUser = await User.findOne({ email: session.user?.email });
-      return { ...session, id: sessionUser._id ?? undefined };
+      // const sessionUser = await User.findOne({ email: session.user?.email });
+      // return { ...session, id: sessionUser._id ?? undefined };
+      return session;
     },
     async signIn({ profile }: { profile?: Profile | undefined }) {
       const GoogleProfile = profile as GoogleProfile;
