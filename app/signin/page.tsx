@@ -1,13 +1,8 @@
 "use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
-
 import Brand from "../components/Brand";
 import Logo from "../components/Logo";
-import Puerto from "@/models/Puertos";
-import { connectDb } from "@/utils/database";
-
-const puertos = require("../data/data.json");
+import { signIn } from "next-auth/react";
 
 export default function Home() {
   return (

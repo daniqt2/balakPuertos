@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { IUser } from "@/interfaces/user.interface";
-import { name } from "../../.next/server/app/auth/signin/page";
+import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 
 export default function Header() {
@@ -11,7 +11,7 @@ export default function Header() {
   const [user, setUser] = useState<IUser | undefined>();
 
   useEffect(() => {
-    if (session?.user?.name) setUser(session?.user);
+    if (session?.user?.name) setUser(session?.user as IUser);
   }, [session?.user?.email]);
 
   return (
@@ -20,7 +20,9 @@ export default function Header() {
       {user && (
         <div className="flex ">
           <p className="text-white mr-4 uppercase">{user.name}</p>
-          <button className="text-balak-red text-sm">SIGNOUT</button>
+          <button className="text-balak-red text-sm" onClick={() => signOut()}>
+            SIGNOUT
+          </button>
         </div>
       )}
     </div>
