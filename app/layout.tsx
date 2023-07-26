@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import { AppWrapper } from "./providers/AppProvider";
+import Header from "./components/Header";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import { NextAuthProvider } from "./providers/SessionWrapper";

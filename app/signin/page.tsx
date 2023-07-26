@@ -1,12 +1,17 @@
 "use client";
 
-import Brand from "./Brand";
-import Logo from "./Logo";
-import { signIn } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
-export default function Login() {
+import Brand from "../components/Brand";
+import Logo from "../components/Logo";
+import Puerto from "@/models/Puertos";
+import { connectDb } from "@/utils/database";
+
+const puertos = require("../data/data.json");
+
+export default function Home() {
   return (
-    <main className="min-h-screen flex-col items-center justify-between p-10 bg-white">
+    <main className="min-h-screen flex-col items-center justify-between p-10">
       <div className="w-full  items-center justify-between font-mono text-sm lg:flex h-full">
         <Brand />
       </div>
@@ -20,7 +25,7 @@ export default function Login() {
                 callbackUrl: `/dashboard`,
               })
             }
-            className=" bg-balak-green text-balak-primary text-black p-2 px-5 rounded-full my-10"
+            className="bg-slate-300 text-black p-2 px-5 rounded-full my-10"
           >
             Iniciar Sesión
           </button>

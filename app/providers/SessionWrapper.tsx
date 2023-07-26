@@ -1,6 +1,6 @@
 "use client";
 
-import { AppWrapper } from "./AppProvider";
+import Header from "../components/Header";
 import { SessionProvider } from "next-auth/react";
 
 type Props = {
@@ -10,7 +10,8 @@ type Props = {
 export const NextAuthProvider = ({ children }: Props) => {
   return (
     <SessionProvider>
-      <AppWrapper>{children}</AppWrapper>
+      <Header></Header>
+      {children}
     </SessionProvider>
   );
 };

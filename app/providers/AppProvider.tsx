@@ -1,15 +1,10 @@
 "use client";
 
 import { SessionProvider, useSession } from "next-auth/react";
-import { createContext, useState } from "react";
-
-import Login from "../components/Login";
+import { createContext, useEffect, useState } from "react";
 
 const AppContext = createContext({});
 
 export function AppWrapper({ children }: { children: React.ReactNode }) {
-  const { data: session } = useSession({ required: true });
-
-  if (!session) return <Login />;
   return <AppContext.Provider value={{}}>{children}</AppContext.Provider>;
 }
